@@ -25,7 +25,6 @@ class Solution:
         
         return s
 
-
 class Solution:
     def minRemoveToMakeValid(self, s: str) -> str:
         stack = []  # To track indices of unmatched '('

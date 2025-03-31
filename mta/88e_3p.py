@@ -7,39 +7,19 @@ class Solution(object):
         :type n: int
         :rtype: None Do not return anything, modify nums1 in-place instead.
         """
-        tmp1=nums1[:m]
-        q=[]
-        while tmp1 and nums2:
-            if tmp1[len(tmp1)-1]>=nums2[len(nums2)-1]:
-                q.append(tmp1.pop())                
+
+        # Start from the end of nums1 and nums2
+        p1, p2, p = m - 1, n - 1, m + n - 1
+
+        # Merge in reverse order
+        while p2 >= 0:
+            if p1>=0 and nums1[p1] > nums2[p2]:
+                nums1[p] = nums1[p1]
+                p1 -= 1
             else:
-                q.append(nums2.pop())
-
-        q += tmp1[::-1] + nums2[::-1]
-        q = q[::-1]
-        for i in range(m+n):
-            nums1[i] = q[i]
-
-
-##################
-        # # Start from the end of nums1 and nums2
-        # p1, p2, p = m - 1, n - 1, m + n - 1
-
-        # # Merge in reverse order
-        # while p1 >= 0 and p2 >= 0:
-        #     if nums1[p1] > nums2[p2]:
-        #         nums1[p] = nums1[p1]
-        #         p1 -= 1
-        #     else:
-        #         nums1[p] = nums2[p2]
-        #         p2 -= 1
-        #     p -= 1
-
-        # # If nums2 still has elements, copy them
-        # while p2 >= 0:
-        #     nums1[p] = nums2[p2]
-        #     p2 -= 1
-        #     p -= 1
+                nums1[p] = nums2[p2]
+                p2 -= 1
+            p -= 1
 ######################
             
 

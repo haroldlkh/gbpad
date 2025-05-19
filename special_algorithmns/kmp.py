@@ -87,3 +87,37 @@ if __name__ == "__main__":
     res = search(pat, txt)
     for i in range(len(res)):
         print(res[i], end=" ")
+
+def index_of(s,t):
+    n = len(s)
+    m = len(t)
+    if m==0: return 0
+    if n==0: return -1
+    lps = [0] * m
+    i = 1
+    ps_len = 0
+    while i<m:
+        if t[i]==t[ps_len]:
+            ps_len+=1
+            lps[i]=ps_len
+            i+=1
+        else:
+            if ps_len !=0:
+                ps_len=lps[ps_len-1]
+            else:
+                lps[i]=0
+                i+=1
+
+    i,j=0,0
+    while i<n:
+        if s[i]!=t[j]:
+            if j>0:
+                j = lps[j-1]
+            else:
+                i+=1
+        else:
+            if j==m-1:
+                return i-j
+            i+=1
+            j+=1
+    return -1

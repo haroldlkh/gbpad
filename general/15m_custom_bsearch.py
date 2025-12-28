@@ -16,3 +16,8 @@ def count_triplets(nums, k):
                 elif nums[mid] > complement: right = mid-1
                 else: left = mid+1
     return count
+
+# sort: n log n
+# bsearch: n
+# loop each val over bsearch: n^2
+# space: extra space: O(1), sort uses o(n)
